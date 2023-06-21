@@ -5,6 +5,7 @@ import co.com.everluis.model.droneload.DroneLoad;
 import co.com.everluis.model.droneload.gateways.DroneLoadRepository;
 import co.com.everluis.model.medication.gateways.MedicationRepository;
 import lombok.RequiredArgsConstructor;
+
 @RequiredArgsConstructor
 public class DroneLoadUseCase {
 

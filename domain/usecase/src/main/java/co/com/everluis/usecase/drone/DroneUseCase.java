@@ -9,7 +9,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DroneUseCase {
 
-    private DroneRepository droneRepository;
+    private final DroneRepository droneRepository;
 
     public Drone createDrone(Drone drone){
         if(validateDroneData(drone)){
@@ -27,9 +27,6 @@ public class DroneUseCase {
         return availableDronesForLoading;
     }
 
-    public Integer getDroneBatteryCapacity(String droneSerial){
-        return getDroneBySerial(droneSerial).getBatteryCapacity();
-    }
     private boolean validateDroneData(Drone drone) {
         return true;
     }

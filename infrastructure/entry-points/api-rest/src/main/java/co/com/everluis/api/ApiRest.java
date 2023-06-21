@@ -1,6 +1,5 @@
 package co.com.everluis.api;
 import co.com.everluis.model.drone.Drone;
-import co.com.everluis.model.droneload.DroneLoad;
 import co.com.everluis.usecase.drone.DroneUseCase;
 import co.com.everluis.usecase.droneload.DroneLoadUseCase;
 import lombok.AllArgsConstructor;
@@ -21,7 +20,8 @@ public class ApiRest {
 
     @PostMapping(path = "/drone")
     public ResponseEntity<Drone> createDrone(@RequestBody Drone drone) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(droneUseCase.createDrone(drone));
+        droneUseCase.createDrone(drone);
+        return ResponseEntity.status(HttpStatus.CREATED).body(droneUseCase.getDroneBySerial(drone.getSerialNumber()));
     }
 
     @GetMapping(path = "/drone/check-available-drones")
@@ -31,6 +31,15 @@ public class ApiRest {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
         return ResponseEntity.ok(availableDrones);
+    }
+
+    @GetMapping(path = "/drone/{droneSerial}/batteryLevel")
+    public ResponseEntity<Integer> getDroneBatteryCapacity(@PathVariable String droneSerial) {
+        Drone drone = droneUseCase.getDroneBySerial(droneSerial);
+        if (drone != null){
+            return ResponseEntity.ok(drone.getBatteryCapacity());
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }
