@@ -3,8 +3,12 @@ package co.com.everluis.usecase.droneload;
 import co.com.everluis.model.drone.gateways.DroneRepository;
 import co.com.everluis.model.droneload.DroneLoad;
 import co.com.everluis.model.droneload.gateways.DroneLoadRepository;
+import co.com.everluis.model.loadedmedication.LoadedMedication;
 import co.com.everluis.model.medication.gateways.MedicationRepository;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
 @RequiredArgsConstructor
 public class DroneLoadUseCase {
 
@@ -13,7 +17,7 @@ public class DroneLoadUseCase {
     private final DroneLoadRepository droneLoadRepository;
 
     public Boolean loadMedicationAtDrone(String droneSerial, String medicationCode, int quantity){
-        if (droneLoadOverWeight(droneSerial,medicationCode,quantity)){
+        if (!droneLoadOverWeight(droneSerial,medicationCode,quantity)){
             droneLoadRepository.saveDroneLoad(new DroneLoad(droneSerial,medicationCode,quantity));
             return true;
         }
@@ -23,5 +27,9 @@ public class DroneLoadUseCase {
     private boolean droneLoadOverWeight(String droneSerial, String medicationCode, int quantity) {
         return (medicationRepository.getMedicationByCode(medicationCode).getMedicationWeight() * quantity)
             > droneRepository.getDroneBySerial(droneSerial).getWeightLimit();
+    }
+
+    public List<LoadedMedication> getLoadedMedicationByDroneSerial(String droneSerial){
+        return droneLoadRepository.getLoadedMedicationByDroneSerial(droneSerial);
     }
 }

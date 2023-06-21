@@ -1,14 +1,29 @@
-##Spring Configuration
 server:
   port: 8080
 spring:
   application:
-    name: MusalaDrones
+    name: "MusalaDrones"
   devtools:
     add-properties: false
   h2:
     console:
       enabled: true
-      path: /h2
+      path: "/h2"
   profiles:
-    include:
+    include: null
+  datasource:
+    url: "jdbc:mysql://dronesmusala.cwthsuzsbfv4.us-east-2.rds.amazonaws.com:3306/drones"
+    username: "admin"
+    password: "ControlArt3"
+    driverClassName: "com.mysql.jdbc.Driver"
+  jpa:
+    databasePlatform: ""
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  endpoint:
+    health:
+      probes:
+        enabled: true
