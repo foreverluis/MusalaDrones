@@ -20,7 +20,7 @@ public class MedicationEntity {
     @Column(name = "medication_name")
     private String medicationName;
     @Column(name = "weight")
-    private int medicationWeight;
+    private Double medicationWeight;
     @Column(name = "image_url")
     private String medicationImage;
 }

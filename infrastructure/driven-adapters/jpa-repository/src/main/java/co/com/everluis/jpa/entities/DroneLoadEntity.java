@@ -16,9 +16,9 @@ public class DroneLoadEntity {
 
     @Id
     @Column(name = "drone_id")
-    private String drone;
+    private String droneSerial;
     @Column(name = "medication_id")
-    private String medication;
+    private String medicationCode;
     @Column(name = "quantity")
     private int quantity;
 }

@@ -1,4 +1,4 @@
-package co.com.everluis.model.medication;
+package co.com.everluis.model.loadedmedication;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -6,10 +6,11 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 @Builder(toBuilder = true)
-public class Medication {
-
+public class LoadedMedication {
+    private String droneSerial;
+    private String medicationCode;
     private String medicationName;
     private Double medicationWeight;
-    private String medicationCode;
     private String medicationImage;
+    private int quantity;
 }

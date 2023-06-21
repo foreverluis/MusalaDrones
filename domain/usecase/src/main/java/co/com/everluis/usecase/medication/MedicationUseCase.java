@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MedicationUseCase {
 
-    private MedicationRepository medicationRepository;
+    private final MedicationRepository medicationRepository;
 
     public Medication getMedicationByCode(String medicationCode){
         return medicationRepository.getMedicationByCode(medicationCode);

@@ -19,6 +19,6 @@ public class MedicationAdapter extends
 
     @Override
     public Medication getMedicationByCode(String medicationCode) {
-        return null;
+        return repository.getMedicationByCode(medicationCode);
     }
 }
