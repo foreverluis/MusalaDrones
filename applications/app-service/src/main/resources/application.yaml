@@ -12,12 +12,12 @@ spring:
   profiles:
     include: null
   datasource:
-    url: "jdbc:h2:mem:test"
-    username: "sa"
-    password: "pass"
-    driverClassName: "org.h2.Driver"
+    url: "jdbc:mysql://dronesmusala.cwthsuzsbfv4.us-east-2.rds.amazonaws.com:3306/drones"
+    username: "admin"
+    password: "ControlArt3"
+    driverClassName: "com.mysql.jdbc.Driver"
   jpa:
-    databasePlatform: "org.hibernate.dialect.H2Dialect"
+    databasePlatform: ""
 management:
   endpoints:
     web:
