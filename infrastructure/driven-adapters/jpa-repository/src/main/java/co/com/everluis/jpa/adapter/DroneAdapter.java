@@ -34,4 +34,9 @@ public class DroneAdapter extends
     public List<Drone> getAvailableDronesForLoading() {
         return repository.getAvailableDronesForLoading();
     }
+
+    @Override
+    public List<Drone> getAllDrones() {
+        return repository.getAllDrones();
+    }
 }
