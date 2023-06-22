@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface DroneRepository {
     Drone saveDrone(Drone drone);
-
     Drone getDroneBySerial(String droneSerial);
-
     List<Drone> getAvailableDronesForLoading();
+    List<Drone> getAllDrones();
 }

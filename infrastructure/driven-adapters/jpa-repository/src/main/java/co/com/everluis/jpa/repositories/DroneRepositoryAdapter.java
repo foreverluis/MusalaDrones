@@ -17,4 +17,6 @@ public interface DroneRepositoryAdapter extends CrudRepository<DroneEntity, Long
     Optional<Drone> getDroneBySerial(@Param("serial") String serial);
     @Query(value = "SELECT new co.com.everluis.model.drone.Drone(drone.serialNumber, drone.droneModel, drone.weightLimit, drone.batteryCapacity, drone.droneState)FROM DroneEntity drone WHERE drone.droneState = co.com.everluis.model.enums.DroneState.IDLE AND drone.batteryCapacity > 24")
     List<Drone> getAvailableDronesForLoading();
+    @Query(value ="SELECT new co.com.everluis.model.drone.Drone(drone.serialNumber, drone.droneModel, drone.weightLimit, drone.batteryCapacity, drone.droneState)FROM DroneEntity drone" )
+    List<Drone> getAllDrones();
 }
