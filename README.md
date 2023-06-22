@@ -63,7 +63,6 @@ Response:
 "batteryCapacity": 80,
 "state": "IDLE"
 }
-
 ```
 ###Load Medication on a Drone
 Endpoint: POST /drone/{droneSerial}/load-medication
