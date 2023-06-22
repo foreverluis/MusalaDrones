@@ -1,0 +1,705 @@
+CREATE DATABASE `drones`
+
+CREATE TABLE `drone` (
+  `serial_number` varchar(255) NOT NULL,
+  `battery_capacity` int DEFAULT NULL,
+  `model` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `weight_limit` int DEFAULT NULL,
+  PRIMARY KEY (`serial_number`)
+)
+
+-- drones.medication definition
+
+CREATE TABLE `medication` (
+  `medication_code` varchar(255) NOT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `medication_name` varchar(255) DEFAULT NULL,
+  `weight` int DEFAULT NULL,
+  PRIMARY KEY (`medication_code`)
+)
+-- drones.drone_load definition
+
+CREATE TABLE `drone_load` (
+  `drone_id` varchar(255) NOT NULL,
+  `medication_id` varchar(255) DEFAULT NULL,
+  `quantity` int DEFAULT NULL
+)
+-- drones.event_log definition
+
+CREATE TABLE `event_log` (
+  `event_id` varchar(255) NOT NULL,
+  `event_details` varchar(255) DEFAULT NULL,
+  `event_entity` varchar(255) DEFAULT NULL,
+  `event_type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`event_id`)
+)
+-- insert data drones.drone
+INSERT INTO drones.drone
+(serial_number, battery_capacity, model, state, weight_limit)
+VALUES('SERIAL20', 30, 'HeavyWeight', 'LOADED', 500);
+INSERT INTO drones.drone
+(serial_number, battery_capacity, model, state, weight_limit)
+VALUES('SERIAL21', 33, 'HeavyWeight', 'IDLE', 499);
+INSERT INTO drones.drone
+(serial_number, battery_capacity, model, state, weight_limit)
+VALUES('SERIAL22', 55, 'LightWeight', 'IDLE', 150);
+INSERT INTO drones.drone
+(serial_number, battery_capacity, model, state, weight_limit)
+VALUES('SERIAL23', 2, 'LightWeight', 'IDLE', 120);
+INSERT INTO drones.drone
+(serial_number, battery_capacity, model, state, weight_limit)
+VALUES('SERIAL24', 90, 'CruiserWeight', 'IDLE', 350);
+INSERT INTO drones.drone
+(serial_number, battery_capacity, model, state, weight_limit)
+VALUES('SERIAL26', 90, 'CruiserWeight', 'IDLE', 500);
+INSERT INTO drones.drone
+(serial_number, battery_capacity, model, state, weight_limit)
+VALUES('SERIAL27', 90, 'CruiserWeight', 'IDLE', 501);
+INSERT INTO drones.drone
+(serial_number, battery_capacity, model, state, weight_limit)
+VALUES('SERIAL31', 100, 'LightWeight', 'LOADED', 100);
+INSERT INTO drones.drone
+(serial_number, battery_capacity, model, state, weight_limit)
+VALUES('SERIAL32', 100, 'LightWeight', 'LOADED', 100);
+
+-- insert data drones.medication
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD01050', 'MD01050.JPG', 'Medicine 1', 50);
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD02100', 'MD02100.JPG', 'Medicine 2', 100);
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD03150', 'MD03150.JPG', 'Medicine 3', 150);
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD04200', 'MD04200.JPG', 'Medicine 4', 200);
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD05250', 'MD05250.JPG', 'Medicine 5', 250);
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD06350', 'MD06350.JPG', 'Medicine 6', 300);
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD07350', 'MD07350.JPG', 'Medicine 7', 350);
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD08400', 'MD08400.JPG', 'Medicine 8', 400);
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD09450', 'MD09450.JPG', 'Medicine 9', 450);
+INSERT INTO drones.medication
+(medication_code, image_url, medication_name, weight)
+VALUES('MD10500', 'MD10500.JPG', 'Medicine 10', 500);
+
+-- insert data drones.drone_load
+INSERT INTO drones.drone_load
+(drone_id, medication_id, quantity)
+VALUES('SERIAL20', 'MD01050', 4);
+
+-- insert data drones.event_log
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 11:49:40.805 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 11:49:40.805 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 11:49:40.805 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 11:49:40.805 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 11:49:40.805 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 11:49:40.805 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 11:49:40.805 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 11:49:40.805 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 11:49:40.805 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:42:53.092 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:42:53.092 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:42:53.092 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:42:53.092 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:42:53.092 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:42:53.092 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:42:53.092 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:42:53.092 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:42:53.092 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:31.238 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:31.238 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:31.238 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:31.238 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:31.238 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:31.238 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:31.238 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:31.238 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:31.238 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:37.973 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:37.973 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:37.973 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:37.973 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:37.973 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:37.973 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:37.973 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:37.973 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:37.973 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:44.62 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:44.62 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:44.62 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:44.62 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:44.62 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:44.62 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:44.62 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:44.62 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:44.62 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:51.19 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:51.19 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:51.19 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:51.19 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:51.19 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:51.19 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:51.19 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:51.19 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:51.19 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:57.745 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:57.745 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:57.745 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:57.745 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:57.745 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:57.745 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:57.745 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:57.745 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:43:57.745 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:04.283 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:04.283 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:04.283 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:04.283 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:04.283 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:04.283 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:04.283 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:04.283 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:04.283 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:10.866 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:10.866 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:10.866 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:10.866 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:10.866 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:10.866 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:10.866 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:10.866 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:10.866 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:17.369 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:17.369 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:17.369 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:17.369 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:17.369 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:17.369 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:17.369 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:17.369 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:17.369 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:23.896 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:23.896 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:23.896 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:23.896 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:23.896 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:23.896 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:23.896 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:23.896 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:23.896 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:30.542 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:30.542 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:30.542 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:30.542 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:30.542 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:30.542 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:30.542 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:30.542 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:30.542 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:37.033 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:37.033 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:37.033 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:37.033 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:37.033 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:37.033 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:37.033 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:37.033 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:37.033 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:43.545 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:43.545 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:43.545 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:43.545 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:43.545 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:43.545 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:43.545 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:43.545 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 12:44:43.545 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:03:59.614 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:03:59.614 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:03:59.614 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:03:59.614 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:03:59.614 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:03:59.614 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:03:59.614 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:03:59.614 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:03:59.614 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:07:46.412 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:07:46.425 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:07:46.425 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:07:46.425 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:07:46.425 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:07:46.425 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:07:46.425 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:07:46.425 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:07:46.425 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:14:14.399 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:14:14.399 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:14:14.399 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:14:14.399 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:14:14.399 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:14:14.399 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:14:14.399 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:14:14.399 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:14:14.399 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:24:16.228 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:24:16.228 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:24:16.228 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:24:16.228 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:24:16.228 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:24:16.228 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:24:16.228 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:24:16.228 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:24:16.228 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:34:18.317 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:34:18.317 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:34:18.317 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:34:18.317 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:34:18.317 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:34:18.317 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:34:18.317 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:34:18.317 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:34:18.317 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:44:20.52 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:44:20.52 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:44:20.52 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:44:20.52 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:44:20.52 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:44:20.52 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:44:20.52 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:44:20.52 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:44:20.52 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:48:49.543 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:48:49.543 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:48:49.543 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:48:49.543 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:48:49.543 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:48:49.543 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:48:49.543 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:48:49.543 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 13:48:49.543 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:00:36.578 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:00:36.578 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:00:36.578 - SERIAL22', 'Battery level: 55', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:00:36.578 - SERIAL23', 'Battery level: 2', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:00:36.578 - SERIAL24', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:00:36.578 - SERIAL26', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:00:36.578 - SERIAL27', 'Battery level: 90', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:00:36.578 - SERIAL31', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:00:36.578 - SERIAL32', 'Battery level: 100', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:10:46.935 - SERIAL20', 'Battery level: 30', 'Drone', 'Battery Level Log');
+INSERT INTO drones.event_log
+(event_id, event_details, event_entity, event_type)
+VALUES('2023-06-22 18:10:46.935 - SERIAL21', 'Battery level: 33', 'Drone', 'Battery Level Log');
+
+
