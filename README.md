@@ -5,12 +5,14 @@ This is a REST API service that allows clients to communicate with drones for re
 - Java Development Kit (JDK) 8 or higher
 - Gradle 6.8.3
 - Docker (optional, for running a database container)
+
 ##Technologies Used
 - Java
 - Spring Boot
 - Spring Data JPA
 - Spring Web
 - MySql (can be replaced with any other database)
+
 ##Getting Started
 Clone the Repository
 ```shell
@@ -35,6 +37,7 @@ java -jar target/drones.jar
 The API can be accessed at http://localhost:8080
 
 ##API Endpoints
+
 ###Register a Drone
 Endpoint: POST /drones
 
